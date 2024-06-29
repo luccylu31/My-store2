@@ -1,0 +1,39 @@
+<!-- cart.component.html -->
+<div class="cart-container">
+  <div class="cart-panel">
+    <div *ngIf="cartItems.length === 0" class="empty-cart-message">
+      <p>Your cart is empty.</p>
+    </div>
+
+    <div *ngFor="let cartItem of cartItems" class="cart-item">
+      <img [src]="cartItem.product.url" alt="Product Image" />
+
+      <div class="cart-item-details">
+        <h3>{{ cartItem.product.name }}</h3>
+        <p>Price: ${{ cartItem.product.price }}</p>
+        <p>
+          Quantity:
+          <input
+            type="number"
+            class="number-input"
+            [(ngModel)]="cartItem.quantity"
+            (change)="updateCartItem(cartItem, $event)"
+          />
+        </p>
+        <button
+          (click)="removeFromCart(cartItem.product.id)"
+          class="btn btn-primary"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="cartItems.length > 0" class="cart-summary">
+      <p>Total Items: {{ getTotalQuantity() }}</p>
+      <p>Total Price: ${{ getTotalPrice() }}</p>
+      <button (click)="clearCart()" class="btn btn-primary">Clear Cart</button>
+      <button (click)="goToCheckout()" class="btn btn-primary">Checkout</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.product-item {
+  margin: 20px;
+  width: 300px;
+}
+
+.card {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}

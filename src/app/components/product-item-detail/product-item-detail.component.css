@@ -1,0 +1,40 @@
+.product-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 600px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  margin-bottom: 10px;
+}
+
+.select-input {
+  width: 100%;
+  max-width: 200px;
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  width: 100%;
+  max-width: 200px;
+}

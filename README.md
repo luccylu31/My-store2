@@ -1,27 +1,39 @@
-# MyStore2
+# MyStore
+Mystore is an e-commerce application built using Angular. It allows users to browse through a variety of products, add them to a shopping cart, and proceed to checkout. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
+## Installation
+To install Mystore locally, follow these steps:
+1. Clone the repository:
+    git clone <repository-url>
+    cd mystore
+2. Install dependencies:
+    npm install
 
-## Development server
+## Launching the Application
+To launch the Mystore application, run the following command:
+    ng serve
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Navigate to http://localhost:4200/ in your web browser to view the application.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Functionality
+### Browse Products
+    View a list of available products.
+    Click on a product to view detailed information.
+### Add to Cart
+    Select the quantity of a product and add it to the shopping cart.
+### View Cart
+    Review items added to the cart.
+    Adjust quantities or remove items as needed.
+### Checkout
+    Fill out a checkout form with name, email, address, and credit card information.
+    Select a payment method (Credit Card, PayPal, Cash on Delivery).
+    Complete the order and receive a confirmation.
+### Manage Orders
+    View previous orders.
+    Retrieve details of a specific order by its ID.
+    
+## Technologies Used
+    Angular
+    TypeScript
+    HTML/CSS
+    Bootstrap

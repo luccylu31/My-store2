@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #33b5e5;
+  padding: 10px 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+.header-menu {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.header-menu li {
+  margin: 0 10px;
+}
+
+.menu-divider {
+  color: #ffff;
+}
+
+.header-menu a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.header-menu a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  color: #fff;
+}

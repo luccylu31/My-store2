@@ -1,0 +1,102 @@
+<form
+  (ngSubmit)="submitCheckoutForm()"
+  [formGroup]="checkoutForm"
+  class="checkout-form"
+>
+  <h2>Checkout</h2>
+
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input
+      type="text"
+      id="name"
+      formControlName="name"
+      required
+      placeholder="Minimum 3 characters"
+    />
+    <div
+      *ngIf="
+        checkoutForm.get('name')?.invalid &&
+        (checkoutForm.get('name')?.dirty || checkoutForm.get('name')?.touched)
+      "
+    >
+      <span *ngIf="checkoutForm.get('name')?.errors?.['required']"
+        >Name is required.</span
+      >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      formControlName="email"
+      required
+      placeholder="Minimum 6 characters"
+    />
+    <div
+      *ngIf="
+        checkoutForm.get('email')?.invalid &&
+        (checkoutForm.get('email')?.dirty || checkoutForm.get('email')?.touched)
+      "
+    >
+      <span *ngIf="checkoutForm.get('email')?.errors?.['required']"
+        >Email is required.</span
+      >
+      <span *ngIf="checkoutForm.get('email')?.errors?.['email']"
+        >Invalid email format.</span
+      >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="address">Address:</label>
+    <textarea
+      id="address"
+      formControlName="address"
+      required
+      placeholder="Enter your address"
+    ></textarea>
+    <div
+      *ngIf="
+        checkoutForm.get('address')?.invalid &&
+        (checkoutForm.get('address')?.dirty ||
+          checkoutForm.get('address')?.touched)
+      "
+    >
+      <span *ngIf="checkoutForm.get('address')?.errors?.['required']"
+        >Address is required.</span
+      >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="creditCardNumber">Credit Card Number:</label>
+    <input
+      type="text"
+      id="creditCardNumber"
+      formControlName="creditCardNumber"
+      placeholder="Credit card number"
+      required
+    />
+    <div
+      *ngIf="
+        checkoutForm.get('creditCardNumber')?.invalid &&
+        (checkoutForm.get('creditCardNumber')?.dirty ||
+          checkoutForm.get('creditCardNumber')?.touched)
+      "
+    >
+      <span *ngIf="checkoutForm.get('creditCardNumber')?.errors?.['required']"
+        >Credit card number is required.</span
+      >
+      <span *ngIf="checkoutForm.get('creditCardNumber')?.errors?.['pattern']"
+        >Invalid credit card number format.</span
+      >
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="checkoutForm.invalid">
+    Complete Order
+  </button>
+</form>
