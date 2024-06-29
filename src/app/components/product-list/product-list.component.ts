@@ -27,4 +27,8 @@ export class ProductListComponent implements OnInit {
       },
     });
   }
+
+  handleProductAddedToCart(product: Product): void {
+    console.log(`${product.name} added to cart.`);
+  }
 }

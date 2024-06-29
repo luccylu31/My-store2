@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../models/product';
 import { Router } from '@angular/router';
 import { CartService } from '../../services/cart.service';
@@ -10,6 +10,7 @@ import { CartService } from '../../services/cart.service';
 })
 export class ProductItemComponent {
   @Input() product!: Product;
+  @Output() productAddedToCart: EventEmitter<Product> = new EventEmitter<Product>();
   selectedQuantity: number = 1;
 
   constructor(
@@ -28,6 +29,7 @@ export class ProductItemComponent {
   addToCart(): void {
     if (this.product && this.selectedQuantity > 0) {
       this.cartService.addToCart(this.product, this.selectedQuantity);
+      this.productAddedToCart.emit(this.product); 
       alert('Added to cart!');
     } else {
       alert('Please select a quantity greater than zero.');
