@@ -32,6 +32,7 @@ export class CartComponent implements OnInit {
     this.calculateTotalPrice();
     this.itemRemoved.emit(productId);
     this.cartItemsChange.emit(this.cartItems);
+    alert('Item has been deleted!');
   }
 
   calculateTotalPrice(): void {
