@@ -1,8 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { CartComponent } from './cart.component';
 import { CartService } from '../../services/cart.service';
 import { Product } from '../../models/product';
-import { of } from 'rxjs';
 
 describe('CartComponent', () => {
   let component: CartComponent;
@@ -19,7 +18,7 @@ describe('CartComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CartComponent);
     component = fixture.componentInstance;
-    cartService = TestBed.inject(CartService);
+    cartService = TestBed.inject(CartService); 
     fixture.detectChanges();
   });
 
@@ -27,7 +26,7 @@ describe('CartComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize cartItems and totalPrice on ngOnInit', () => {
+  it('should initialize cartItems and totalPrice on ngOnInit', fakeAsync(() => {
     const mockCartItems: { product: Product; quantity: number }[] = [
       {
         product: {
@@ -55,8 +54,8 @@ describe('CartComponent', () => {
     component.ngOnInit();
 
     expect(component.cartItems).toEqual(mockCartItems);
-    expect(component.totalPrice).toEqual(40);
-  });
+    expect(component.totalPrice).toEqual(40); 
+  }));
 
   it('should remove item from cart', () => {
     const productIdToRemove = 1;
@@ -88,7 +87,7 @@ describe('CartComponent', () => {
     spyOn(cartService, 'updateCartItem').and.stub();
     spyOn(component, 'calculateTotalPrice').and.stub();
 
-    component.updateCartItem(mockCartItem, newQuantity);
+    component.updateCartItem(mockCartItem, event);
 
     expect(mockCartItem.quantity).toEqual(newQuantity);
     expect(cartService.updateCartItem).toHaveBeenCalledWith(mockCartItem);
