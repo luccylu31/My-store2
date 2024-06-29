@@ -1,4 +1,3 @@
-<!-- cart.component.html -->
 <div class="cart-container">
   <div class="cart-panel">
     <div *ngIf="cartItems.length === 0" class="empty-cart-message">
@@ -17,7 +16,7 @@
             type="number"
             class="number-input"
             [(ngModel)]="cartItem.quantity"
-            (change)="updateCartItem(cartItem, $event)"
+            (ngModelChange)="updateCartItem(cartItem, $event.target.value)"
           />
         </p>
         <button

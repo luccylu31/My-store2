@@ -14,7 +14,7 @@ export class CheckoutFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private cartService: CartService,
-    private router: Router,
+    private router: Router
   ) {
     this.checkoutForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
