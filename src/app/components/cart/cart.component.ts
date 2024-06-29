@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { Product } from '../../models/product';
 
@@ -8,11 +8,7 @@ import { Product } from '../../models/product';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  @Input() cartItems: { product: Product; quantity: number }[] = [];
-  @Output() cartItemsChange = new EventEmitter<{ product: Product; quantity: number }[]>();
-  @Output() itemRemoved = new EventEmitter<number>();
-  @Output() itemQuantityUpdated = new EventEmitter<{ product: Product, quantity: number }>();
-
+  cartItems: { product: Product; quantity: number }[] = [];
   totalPrice: number = 0;
 
   constructor(private cartService: CartService) {}
@@ -30,9 +26,7 @@ export class CartComponent implements OnInit {
     this.cartService.removeFromCart(productId);
     this.loadCartItems();
     this.calculateTotalPrice();
-    this.itemRemoved.emit(productId);
-    this.cartItemsChange.emit(this.cartItems);
-    alert('Item has been deleted!');
+    alert('Item has been removed from the cart.');
   }
 
   calculateTotalPrice(): void {
@@ -41,13 +35,15 @@ export class CartComponent implements OnInit {
     }, 0);
   }
 
-  updateCartItem(cartItem: { product: Product; quantity: number }, newQuantity: number): void {
+  updateCartItem(
+    cartItem: { product: Product; quantity: number },
+    event: any,
+  ): void {
+    const newQuantity = event.target.valueAsNumber;
     if (!isNaN(newQuantity)) {
       cartItem.quantity = newQuantity;
       this.cartService.updateCartItem(cartItem);
       this.calculateTotalPrice();
-      this.itemQuantityUpdated.emit({ product: cartItem.product, quantity: newQuantity });
-      this.cartItemsChange.emit(this.cartItems);
     }
   }
 
@@ -63,7 +59,6 @@ export class CartComponent implements OnInit {
     this.cartService.clearCart();
     this.loadCartItems();
     this.calculateTotalPrice();
-    this.cartItemsChange.emit(this.cartItems);
   }
 
   goToCheckout(): void {
